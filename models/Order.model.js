@@ -1,21 +1,21 @@
 const { Schema, model } = require("mongoose");
 
-const Order = new Schema(
+const orderSchema = new Schema(
   {
     order_id: {
       type: Number,
       required: true,
     },
-    Item_id: {
+    item_id: [{
       type: Number,
       required: true,
-    },
+    }],
     value: {
       type: Number,
       required: true,
     },
     status: {
-      type: String,
+      type: Boolean,
       required: true,
     },
   },
@@ -23,3 +23,5 @@ const Order = new Schema(
     timestamps: true,
   }
 );
+
+module.exports = model("Order", orderSchema );

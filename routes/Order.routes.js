@@ -6,10 +6,13 @@ const router = Router();
 
 // Route to create new Order
 
-router.post("/signup", async (req, res) => {
+router.post("/new", async (req, res) => {
+  console.log("new")
     const newOrder = req.body;
   try {
     const order = await OrderRepo.create(newOrder);
+      console.log("ok")
+    
     res.status(201).json({ message: "New order created" });
   } catch (e) {
     res.status(500).json({ message: "Error while create new order" });
@@ -23,7 +26,7 @@ router.put("/edit/:id", async (req, res) => {
     const idOrder = req.params.id;
     try {
         const editedOrder = await OrderRepo.edit(idOrder, allData)
-        res.status(201).json({name: editedOrder.name});
+        res.status(201).json({status: editedOrder.status});
     } catch (e) { 
         res.status(500).json({ message: "Error while edit a Order" });
     }

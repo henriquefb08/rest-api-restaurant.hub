@@ -17,17 +17,17 @@ const restaurantSchema = new Schema (
             required: [true, 'Senha é necessario.'],
         },
         categories: {
-            type: Schema.Types.ObjectId,
-            ref: "category",
+            type: String,
+            enum: ["Japonesa", "Brasileira", "Italiana", 'Francesa', "Indiana", "Fast Food", "Outros"]
         },
         description: { 
             type: String,
             required: true, 
         },
-        menu: { 
+        menu: [{ 
             type: Schema.Types.ObjectId,
-            ref: "menu",
-        },
+            ref: "item",
+        }],
         orders: [{ 
             type: Schema.Types.ObjectId,
             ref: "order",

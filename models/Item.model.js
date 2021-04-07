@@ -2,11 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema(
     {
-        Item: {
-        type: String,
-        ItemId: Number,
+        name: String,
         value: Number,
-       required: true,
+        description: String,
+        category: String,
     },
     {
         timestamps: true,
