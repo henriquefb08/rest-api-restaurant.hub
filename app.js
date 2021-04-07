@@ -1,23 +1,35 @@
-require("dotenv").config(); 
-const express = require('express'); 
-const bodyparser = require('body-parser');
-const cors = require('cors'); 
+require("dotenv").config();
+const express = require("express");
+const bodyparser = require("body-parser");
+const cors = require("cors");
 
-// Connect DB 
+// Connect DB
 
-require('./config/db.config');
+require("./config/db.config");
 
 const app = express();
 
-// Middlewares 
+// Middlewares
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: false})); 
+app.use(bodyparser.urlencoded({ extended: false }));
 
 // Routes
 
+const consumerRoutes = require("./routes/Consumer.routes");
+app.use('/consumer', consumerRoutes);
 
+const RestaurantRoutes = require('./routes/Restaurant.routes');
+app.use('/restaurant', RestaurantRoutes); 
 
+const OrderRoutes = require("./routes/Order.routes");
+app.use('/order', OrderRoutes);
 // export app
 
-module.exports = app; 
+module.exports = app;
+
+
+
+
+
+

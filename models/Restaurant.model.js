@@ -31,12 +31,12 @@ const restaurantSchema = new Schema (
         orders: [{ 
             type: Schema.Types.ObjectId,
             ref: "order",
-        }],
+        }]
     },
 
     { 
        timestamps: true,
-    }, 
+    } 
 );
 
 module.exports = model("Restaurant", restaurantSchema);
