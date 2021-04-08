@@ -1,13 +1,9 @@
 const { Router } = require("express");
-
 const OrderRepo = require("../repository/Order.dao");
-
 const router = Router();
 
 // Route to create new Order
-
 router.post("/new", async (req, res) => {
-  console.log("new")
     const newOrder = req.body;
   try {
     const order = await OrderRepo.create(newOrder);
@@ -20,7 +16,6 @@ router.post("/new", async (req, res) => {
 });
 
 // Route to edit a Order
-
 router.put("/edit/:id", async (req, res) => { 
     const allData = req.body;
     const idOrder = req.params.id;
@@ -31,6 +26,7 @@ router.put("/edit/:id", async (req, res) => {
         res.status(500).json({ message: "Error while edit a Order" });
     }
 
-})
- 
+});
+
+
 module.exports = router;

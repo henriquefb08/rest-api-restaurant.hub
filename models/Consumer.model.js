@@ -12,7 +12,7 @@ const consumerSchema = new Schema(
       required: [true, "E-mail necessário."],
       unique: true,
     },
-    password: {
+    passwordHash: {
       type: String,
       required: [true, "Senha é necessario."],
     },

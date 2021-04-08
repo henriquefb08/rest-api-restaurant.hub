@@ -25,6 +25,8 @@ app.use('/restaurant', RestaurantRoutes);
 const OrderRoutes = require("./routes/Order.routes");
 app.use('/order', OrderRoutes);
 
+const ItemRoutes = require("./routes/Item.routes");
+app.use('/item', ItemRoutes);
 
 // export app
 

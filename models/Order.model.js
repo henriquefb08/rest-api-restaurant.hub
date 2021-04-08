@@ -6,10 +6,12 @@ const orderSchema = new Schema(
       type: Number,
       required: true,
     },
-    item_id: [{
-      type: Number,
-      required: true,
-    }],
+    item_id: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "item",
+      },
+    ],
     value: {
       type: Number,
       required: true,
@@ -24,4 +26,4 @@ const orderSchema = new Schema(
   }
 );
 
-module.exports = model("Order", orderSchema );
+module.exports = model("Order", orderSchema);

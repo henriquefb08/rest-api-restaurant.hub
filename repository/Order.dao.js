@@ -8,15 +8,12 @@ class OrderRepository {
   // Create new Order
   create = async (newOrder) => {
     try {
-          console.log(newOrder)
       const createdOrder = await this.order.create(newOrder);
-
       return createdOrder;
     } catch (e) {
       throw new Error();
     }
   };
-
 
   // Edit any Order
 

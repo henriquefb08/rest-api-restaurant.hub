@@ -1,11 +1,8 @@
 const { Router  } = require("express"); 
-
 const RestaurantRepo = require('../repository/Restaurant.dao'); 
-
 const router = Router(); 
 
 // Route to create new Restaurant
-
 router.post("/signup", async (req, res) => {
     const newRestaurant = req.body;
   try {
@@ -17,7 +14,6 @@ router.post("/signup", async (req, res) => {
 });
 
 // Route to edit a Restaurant
-
 router.put('/edit/:id', async (req, res) => { 
     const allData = req.body; 
     const idRestaurant = req.params.id;
@@ -27,6 +23,14 @@ router.put('/edit/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Error while edit a Consumer" });        
     }
-})
+});
+
+
+// Route to list Restaurants
+
+
+//Create route to login to restaurant;
+
+//Create route to logout to restaurant;
 
 module.exports = router;
