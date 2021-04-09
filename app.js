@@ -31,7 +31,27 @@ app.use("/item", ItemRoutes);
 app.use("/restaurant", RestaurantRoutes);
 app.use("/consumer", consumerRoutes);
 
-//middleware of autentication
+//middleware of autentication to restaurant
+app.use((req, res, next) => {
+  const token = req.get("Authorization");
+  if (!token) {
+    return res.status(401).json({ message: "Request without token" });
+  }
+  const tokenWithoutBearer = token.split(" ")[1];
+  try {
+    const decodedToken = jwt.verify(
+        tokenWithoutBearer, 
+        process.env.SECRET_JWT
+        );
+        req.restaurant = { decodedToken};
+        return next()
+  }catch(error){
+      return res.status(401) 
+
+  }
+});
+
+//middleware of autentication to consumer
 app.use((req, res, next) => {
   const token = req.get("Authorization");
   if (!token) {
@@ -50,6 +70,7 @@ app.use((req, res, next) => {
 
   }
 });
+
 
 // export app
 

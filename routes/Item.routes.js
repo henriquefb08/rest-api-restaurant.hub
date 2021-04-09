@@ -30,10 +30,7 @@ router.put("/edit/:id", async (req, res) => {
 router.get('/list', async (req, res) => {
     console.log("Antes do try catch")
     try {
-        console.log("dentro do try")
-
       const items = await ItemRepo.list();
-    console.log("aqui")
       res.status(201).json(items);
     } catch (error) {
       res.status(500).json({ message: 'Error while get Items' });

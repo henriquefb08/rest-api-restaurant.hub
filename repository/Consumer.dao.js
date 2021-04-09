@@ -55,5 +55,4 @@ class ConsumerRepository {
   };
 }
 
-
 module.exports = new ConsumerRepository(Consumer);

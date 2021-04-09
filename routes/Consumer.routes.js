@@ -58,6 +58,8 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//Create route to logout to consumer;
+
+
+
 
 module.exports = router;
