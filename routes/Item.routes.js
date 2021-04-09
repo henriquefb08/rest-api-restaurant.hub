@@ -38,4 +38,10 @@ router.get('/list', async (req, res) => {
   });
 
 
+
+  // delete item de uma order
+
+
+
+
   module.exports = router;

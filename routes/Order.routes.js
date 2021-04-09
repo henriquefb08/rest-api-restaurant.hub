@@ -6,9 +6,7 @@ const router = Router();
 router.post("/new", async (req, res) => {
     const newOrder = req.body;
   try {
-    const order = await OrderRepo.create(newOrder);
-      console.log("ok")
-    
+    const order = await OrderRepo.create(newOrder);    
     res.status(201).json({ message: "New order created" });
   } catch (e) {
     res.status(500).json({ message: "Error while create new order" });
@@ -26,6 +24,22 @@ router.put("/edit/:id", async (req, res) => {
         res.status(500).json({ message: "Error while edit a Order" });
     }
 
+});
+
+
+// delete a Item of a Order
+
+router.delete("delete/:id", async (req, res) => { 
+ const {item_id } = req.body; 
+const itemId = req.params.item_id
+try {
+ const deletedItem = await OrderRepo.delete(itemId, item_id)
+ res.status(200).json(deletedItem);
+
+} catch (e) {
+  res.status(500).json({ message: "Error while delete a item" });
+
+}
 });
 
 

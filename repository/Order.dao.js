@@ -28,5 +28,20 @@ class OrderRepository {
       throw new Error();
     }
   };
+
+  // delete a Item of a Order
+delete = async(id, order) => { 
+  try {
+    const deleteItem = await this.order.findByIdAndDelete(id, order, { new: true} )
+    return deleteItem;
+  } catch (e) {
+    throw new Error();
+
+  }
+
+
+}
+
+
 }
 module.exports = new OrderRepository(Order);
