@@ -6,22 +6,37 @@ class ConsumerRepository {
     this.consumer = ConsumerModel;
   }
 
-  // Create new Consumer
+  // (Signup) Create new Consumer
   create = async (consumer) => {
-    const { email, passaword } = consumer;
+    const { name, email, password, description } = consumer;
     try {
       const consumer = await this.consumer.findOne({ email });
       if (consumer) {
         throw new Error();
       } else {
         const salt = bcrypt.genSaltSync(10);
-        const passwordHash = bcrypt.hashSync(passaword, salt);
+        const passwordHash = bcrypt.hashSync(password, salt);
+
         const createdConsumer = await this.consumer.create({
           email,
-          passwordHash
+          passwordHash,
+          name,
+          description,
         });
+
         return createdConsumer;
       }
+    } catch (e) {
+      throw new Error();
+    }
+  };
+
+  // (Login) consumer
+
+  findConsumer = async (email) => {
+    try {
+      const consumer = await this.consumer.findOne({ email });
+      return consumer;
     } catch (e) {
       throw new Error();
     }
@@ -40,8 +55,5 @@ class ConsumerRepository {
   };
 }
 
-//Create route to login to Consumer;
-
-//Create route to logout to Consumer;
 
 module.exports = new ConsumerRepository(Consumer);

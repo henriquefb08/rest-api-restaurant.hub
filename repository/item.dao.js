@@ -30,16 +30,18 @@ class ItemRepository {
   };
 
   // list items de um único restaurant
+  list = async () => {
+    try {
+      const items = await this.item.find()
+      // .populate('restaurant_id')
+        
+      return items;
+    } catch (error) {
+      throw new Error();
+    }
+  };
+
 }
-list = async () => {
-  try {
-    const items = await this.item.find()
-    // .populate('restaurant_id')
-    
-    return items;
-  } catch (error) {
-    throw new Error();
-  }
-};
+
 
 module.exports = new ItemRepository(Item);

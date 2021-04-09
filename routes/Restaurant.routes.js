@@ -31,6 +31,5 @@ router.put('/edit/:id', async (req, res) => {
 
 //Create route to login to restaurant;
 
-//Create route to logout to restaurant;
 
 module.exports = router;

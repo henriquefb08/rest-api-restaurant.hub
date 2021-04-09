@@ -9,6 +9,7 @@ class OrderRepository {
   create = async (newOrder) => {
     try {
       const createdOrder = await this.order.create(newOrder);
+      console.log(newOrder)
       return createdOrder;
     } catch (e) {
       throw new Error();
