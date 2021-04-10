@@ -6,10 +6,10 @@ const itemSchema = new Schema(
     value: Number,
     description: String,
     category: String,
-    restaurant_id: {
+    restaurant_id: [{
       type: Schema.Types.ObjectId,
       ref: "restaurant",
-    },
+    }],
   },
   {
     timestamps: true,

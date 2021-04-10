@@ -12,10 +12,7 @@ const orderSchema = new Schema(
         ref: "item",
       },
     ],
-    value: {
-      type: Number,
-      required: true,
-    },
+   
     status: {
       type: Boolean,
       required: true,

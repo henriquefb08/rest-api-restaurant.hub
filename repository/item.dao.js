@@ -29,19 +29,28 @@ class ItemRepository {
     }
   };
 
-  // list items de um único restaurant
+  // list items
   list = async () => {
     try {
-      const items = await this.item.find()
-      // .populate('restaurant_id')
-        
+      const items = await this.item.find();
       return items;
     } catch (error) {
       throw new Error();
     }
   };
 
-}
+  // list items de um único restaurant
+  listByRestaurant = async (id) => {
 
+    try {
+      const items = await this.item.find({restaurant_id: id});
+      
+      return items;
+    } catch (error) {
+      throw new Error();
+    }
+  };
+}
+// Preciso apagar os items do restaurant que será deletado
 
 module.exports = new ItemRepository(Item);

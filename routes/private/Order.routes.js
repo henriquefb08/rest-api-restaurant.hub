@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const OrderRepo = require("../repository/Order.dao");
+const OrderRepo = require("../../repository/Order.dao");
 const router = Router();
 
 // Route to create new Order
@@ -27,20 +27,7 @@ router.put("/edit/:id", async (req, res) => {
 });
 
 
-// delete a Item of a Order
 
-router.delete("delete/:id", async (req, res) => { 
- const {item_id } = req.body; 
-const itemId = req.params.item_id
-try {
- const deletedItem = await OrderRepo.delete(itemId, item_id)
- res.status(200).json(deletedItem);
-
-} catch (e) {
-  res.status(500).json({ message: "Error while delete a item" });
-
-}
-});
 
 
 module.exports = router;

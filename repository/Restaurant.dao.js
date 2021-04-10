@@ -1,7 +1,6 @@
 const Restaurant = require("../models/Restaurant.model");
 const bcrypt = require("bcryptjs");
 
-
 class RestaurantRepository {
   constructor(RestaurantModel) {
     this.restaurant = RestaurantModel;
@@ -19,7 +18,11 @@ class RestaurantRepository {
         const passwordHash = bcrypt.hashSync(password, salt);
 
         const createdRestaurant = await this.restaurant.create({
-          name, email, passwordHash, categories, description
+          name,
+          email,
+          passwordHash,
+          categories,
+          description,
         });
 
         return createdRestaurant;
@@ -59,17 +62,33 @@ class RestaurantRepository {
   list = async () => {
     try {
       const restaurants = await this.restaurant.find();
-        
+
       return restaurants;
     } catch (error) {
       throw new Error();
     }
   };
+  // Remove a restaurant account
+
+  removeRest = async (id) => {
+    try {
+      const specificRest = await this.restaurant.findByIdAndRemove(id);
+      return specificRest;
+    } catch (error) {
+      throw new Error();
+    }
+  };
+
+  //List a specific restaurant
+
+  listOne = async (id) => {
+    try {
+      const rest = await this.restaurant.findById(id);
+      return rest;
+    } catch (error) {
+      throw new Error();
+    }
+  };
 }
-
-
-
-
-
 
 module.exports = new RestaurantRepository(Restaurant);
