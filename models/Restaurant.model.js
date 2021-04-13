@@ -39,6 +39,13 @@ const restaurantSchema = new Schema(
         ref: "order",
       },
     ],
+
+    Items: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Item",
+      },
+    ],
   },
 
   {

@@ -89,6 +89,10 @@ class RestaurantRepository {
       throw new Error();
     }
   };
+
+ 
+
+
 }
 
 module.exports = new RestaurantRepository(Restaurant);

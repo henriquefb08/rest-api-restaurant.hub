@@ -1,9 +1,7 @@
 const { Router } = require("express");
 const consumerRepo = require("../../repository/Consumer.dao");
 
-
 const router = Router();
-
 
 // Route to edit a Consumer
 router.put("/edit/:id", async (req, res) => {
@@ -17,6 +15,16 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
+// Route to delete a Consumer
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await consumerRepo.deleteCons(req.params.id);
+    res.status(200).json({ message: "This consumer was deleted" });
+  } catch (error) {
+    res.status(500).json({ message: "Error while delete a Consumer" });
+  }
+});
 
 
 module.exports = router;

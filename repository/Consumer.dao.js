@@ -40,7 +40,7 @@ class ConsumerRepository {
     } catch (e) {
       throw new Error();
     }
-  };
+  }; 
 
   // Edit any Consumer
   edit = async (id, consumer) => {
@@ -53,6 +53,22 @@ class ConsumerRepository {
       throw new Error();
     }
   };
+
+  // Delete a Consumer
+
+  deleteCons = async (id) => {
+    try {
+      const deleteConsumer = await this.consumer.findByIdAndRemove(id);
+      return deleteConsumer;
+    } catch (error) {
+      throw new Error();
+    }
+  };
+
+
+
+
+
 }
 
 module.exports = new ConsumerRepository(Consumer);

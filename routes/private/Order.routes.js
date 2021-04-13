@@ -26,6 +26,17 @@ router.put("/edit/:id", async (req, res) => {
 
 });
 
+//Route to list all orders of a restaurant (read)
+
+router.get("/list/:id", async (req, res) => { 
+    try {
+      const listOrders = await OrderRepo.listOrders(req.params.id); 
+      res.status(200).json(listOrders);
+    } catch (error) {
+      res.status(500).json({ message: "Error while list orders of a Restaurant" });
+
+    }
+});
 
 
 

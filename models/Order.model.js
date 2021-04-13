@@ -12,12 +12,16 @@ const orderSchema = new Schema(
         ref: "item",
       },
     ],
-   
     status: {
       type: Boolean,
       required: true,
     },
+    restaurant_id: {
+      type: Schema.Types.ObjectId,
+      ref: "restaurant",
+    },
   },
+  
   {
     timestamps: true,
   }

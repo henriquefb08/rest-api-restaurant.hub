@@ -19,11 +19,9 @@ router.post("/signup", async (req, res) => {
 //Create route to login to restaurant;
 
 router.post("/login", async (req, res) => {
-    console.log('antes do try')
     try {
       const { email, password } = req.body;
       const restaurant = await restaurantRepo.findRestaurant(email);
-      console.log(restaurant)
 
       if (!restaurant) {
         return res.status(400).json();
