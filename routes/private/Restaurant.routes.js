@@ -1,9 +1,7 @@
 const { Router } = require("express");
 const restaurantRepo = require("../../repository/Restaurant.dao");
 
-
 const router = Router();
-
 
 // Route to edit a Restaurant
 router.put("/edit/:id", async (req, res) => {
@@ -17,8 +15,6 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
-
-
 // Remove a restaurant
 
 router.delete("/delete/:id", async (req, res) => {
@@ -29,6 +25,18 @@ router.delete("/delete/:id", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error while remove your Restaurants of our Database" });
+  }
+});
+
+// List orders in a rest
+router.get("/list/:id/orders", async (req, res) => {
+  try {
+    const listedOrders = await restaurantRepo.listOrdersRest(req.params.id);
+    res.status(200).json(listedOrders);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error while list orders in a Restaurant" });
   }
 });
 

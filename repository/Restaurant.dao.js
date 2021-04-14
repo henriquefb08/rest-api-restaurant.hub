@@ -90,7 +90,21 @@ class RestaurantRepository {
     }
   };
 
- 
+
+// List orders in a rest
+
+  listOrdersRest = async (id) => {
+    try {
+      const rest = await this.restaurant.findById(id).populate({path:'orders'});
+     // const rest = await this.restaurant.findById(id).populate({path:'orders', populate:{path:'item_id'} });
+      return rest;
+    } catch (error) {
+      throw new Error();
+    }
+  };
+
+
+
 
 
 }

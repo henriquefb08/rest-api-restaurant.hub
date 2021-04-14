@@ -9,7 +9,7 @@ const orderSchema = new Schema(
     item_id: [
       {
         type: Schema.Types.ObjectId,
-        ref: "item",
+        ref: "Item",
       },
     ],
     status: {
@@ -18,8 +18,11 @@ const orderSchema = new Schema(
     },
     restaurant_id: {
       type: Schema.Types.ObjectId,
-      ref: "restaurant",
+      ref: "Restaurant",
     },
+    total_value: { 
+      type: Number
+    }
   },
   
   {
