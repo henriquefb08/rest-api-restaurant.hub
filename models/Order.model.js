@@ -1,25 +1,33 @@
 const { Schema, model } = require("mongoose");
 
-const Order = new Schema(
+const orderSchema = new Schema(
   {
     order_id: {
       type: Number,
       required: true,
     },
-    Item_id: {
-      type: Number,
-      required: true,
-    },
-    value: {
-      type: Number,
-      required: true,
-    },
+    item_id: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Item",
+      },
+    ],
     status: {
-      type: String,
+      type: Boolean,
       required: true,
     },
+    restaurant_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
+    },
+    total_value: { 
+      type: Number
+    }
   },
+  
   {
     timestamps: true,
   }
 );
+
+module.exports = model("Order", orderSchema);
