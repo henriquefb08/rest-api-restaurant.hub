@@ -8,7 +8,7 @@ const cors = require('cors');
 require('./config/db.config');
 
 const app = express();
-
+app.use(cors());
 // Middlewares 
 
 app.use(bodyparser.json());
