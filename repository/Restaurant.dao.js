@@ -79,16 +79,16 @@ class RestaurantRepository {
     }
   };
 
-  //List a specific restaurant
+    //List a specific restaurant
 
-  listOne = async (id) => {
-    try {
-      const rest = await this.restaurant.findById(id);
-      return rest;
-    } catch (error) {
-      throw new Error();
-    }
-  };
+    listOne = async (id) => {
+      try {
+        const rest = await this.restaurant.findById(id);
+        return rest;
+      } catch (error) {
+        throw new Error();
+      }
+    };
 
 
 // List orders in a rest

@@ -65,6 +65,16 @@ class ConsumerRepository {
     }
   };
 
+   //List a specific consumer
+
+   listOne = async (id) => {
+    try {
+      const cons = await this.consumer.findById(id);
+      return cons;
+    } catch (error) {
+      throw new Error();
+    }
+  };
 
 
 

@@ -26,5 +26,15 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
+//List a specific consumer
+
+router.get("/list/:id", async (req, res) => {
+  try {
+    const consumer = await consumerRepo.listOne(req.params.id);
+    res.status(201).json(consumer);
+  } catch (error) {
+    res.status(500).json({ message: "Error while get a specific Restaurant" });
+  }
+});
 
 module.exports = router;
