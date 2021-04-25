@@ -40,4 +40,16 @@ router.get("/list/:id/orders", async (req, res) => {
   }
 });
 
+//List a specific restaurant
+
+router.get("/list/:id", async (req, res) => {
+  try {
+    const restaurant = await restaurantRepo.listOne(req.params.id);
+    res.status(201).json(restaurant);
+  } catch (error) {
+    res.status(500).json({ message: "Error while get a specific Restaurant" });
+  }
+});
+
 module.exports = router;
+
