@@ -24,8 +24,18 @@ router.put("/edit/:id", async (req, res) => {
     res.status(500).json({ message: "Error while edit a Item" });
   }
 });
-
-// delete item de uma order
+d
+// delete item
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await ItemRepo.removeItem(req.params.id);
+    res.status(200).json({ message: "Your Item was deleted" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error while remove your Item of our Database" });
+  }
+});
 
 
 

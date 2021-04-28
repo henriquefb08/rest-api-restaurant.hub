@@ -41,10 +41,8 @@ class ItemRepository {
 
   // list items de um único restaurant
   listByRestaurant = async (id) => {
-
     try {
       const items = await this.item.find({restaurant_id: id});
-      
       return items;
     } catch (error) {
       throw new Error();
@@ -52,5 +50,14 @@ class ItemRepository {
   };
 }
 // Preciso apagar os items do restaurant que será deletado
+
+removeItem = async (id) => {
+  try {
+    const ItemRemoved = await this.restaurant.findByIdAndRemove(id);
+    return ItemRemoved;
+  } catch (error) {
+    throw new Error();
+  }
+};
 
 module.exports = new ItemRepository(Item);
