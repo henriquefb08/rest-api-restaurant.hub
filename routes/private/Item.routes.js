@@ -29,6 +29,7 @@ router.put("/edit/:id", async (req, res) => {
 router.delete("/delete/:id", async (req, res) => {
   try {
     await ItemRepo.removeItem(req.params.id);
+    
     res.status(200).json({ message: "Your Item was deleted" });
   } catch (error) {
     res

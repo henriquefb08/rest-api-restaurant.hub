@@ -53,7 +53,7 @@ class ItemRepository {
 
 removeItem = async (id) => {
   try {
-    const ItemRemoved = await this.restaurant.findByIdAndRemove(id);
+    const ItemRemoved = await this.item.findByIdAndRemove(id);
     return ItemRemoved;
   } catch (error) {
     throw new Error();
