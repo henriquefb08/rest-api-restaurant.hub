@@ -24,7 +24,7 @@ router.put("/edit/:id", async (req, res) => {
     res.status(500).json({ message: "Error while edit a Item" });
   }
 });
-d
+
 // delete item
 router.delete("/delete/:id", async (req, res) => {
   try {
