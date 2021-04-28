@@ -48,16 +48,19 @@ class ItemRepository {
       throw new Error();
     }
   };
-}
-// Preciso apagar os items do restaurant que será deletado
+  
+  // Preciso apagar os items do restaurant que será deletado
 
 removeItem = async (id) => {
   try {
     const ItemRemoved = await this.item.findByIdAndRemove(id);
     return ItemRemoved;
   } catch (error) {
+    console.log(error)
     throw new Error();
   }
 };
+}
+
 
 module.exports = new ItemRepository(Item);
